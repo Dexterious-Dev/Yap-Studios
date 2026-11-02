@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; style-src 'self'; img-src 'self' data:; connect-src https://api.github.com; base-uri 'none'; form-action 'none'">
+<meta name="referrer" content="no-referrer">
+<meta name="robots" content="noindex, nofollow">
+<title>Studio Admin</title>
+<link rel="icon" href="assets/icon.png">
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+<div class="wrap" id="app">
+  <header class="top">
+    <img class="logo" src="assets/icon.png" alt="" width="40" height="40">
+    <div class="brand"><b>Yap++ Studio</b><span>Admin</span></div>
+    <div class="grow"></div>
+    <div id="topActs" class="row tight hidden">
+      <a class="btn small" href="./" target="_blank" rel="noopener">View site</a>
+      <button class="btn small" id="pwBtn" type="button">Change password</button>
+      <button class="btn small" id="lockBtn" type="button">Lock</button>
+    </div>
+  </header>
+
+  <!-- log in -->
+  <div class="gate" id="gate">
+    <div class="panel">
+      <h2>Admin login</h2>
+      <p class="muted" id="gateNote">Enter your admin password.</p>
+      <form id="loginForm" autocomplete="off">
+        <label class="f" for="pw">Password</label>
+        <input type="password" id="pw" autocomplete="current-password" spellcheck="false">
+        <div class="row end"><button class="btn primary" type="submit" id="loginBtn">Unlock</button></div>
+      </form>
+      <div class="msg" id="loginMsg"></div>
+    </div>
+    <p class="muted center"><a href="#setup" id="toSetup">First time, or your GitHub key expired? Set up admin</a></p>
+  </div>
+
+  <!-- first-time setup -->
+  <div class="gate hidden" id="setup">
+    <div class="panel">
+      <h2>Set up admin</h2>
+      <p class="muted">The panel works through a GitHub key that can only touch this one repo. You make the key, this page locks it with a new random password, and only that password can unlock it again.</p>
+      <ol class="steps">
+        <li>Open <a href="https://github.com/settings/personal-access-tokens/new" target="_blank" rel="noopener">GitHub: new fine-grained token</a> (signed in as <b>Dexterious-Dev</b>).</li>
+        <li>Name it anything. Pick an expiry (when it runs out, come back here).</li>
+        <li>Repository access: <b>Only select repositories</b> &rarr; <b>Yap-Studios</b>.</li>
+        <li>Permissions &rarr; Repository &rarr; <b>Contents: Read and write</b>. Nothing else.</li>
+        <li>Generate it and paste it below.</li>
+      </ol>
+      <form id="setupForm" autocomplete="off">
+        <label class="f" for="tok">GitHub token</label>
+        <input type="password" id="tok" spellcheck="false" placeholder="github_pat_...">
+        <div class="row end"><button class="btn primary" type="submit" id="setupBtn">Check token</button></div>
+      </form>
+      <div class="msg" id="setupMsg"></div>
+      <div id="newPw" class="hidden">
+        <p class="lead">Your admin password. <b>It is shown once and can't be recovered</b>, so save it in a password manager now.</p>
+        <div class="pw"><code id="newPwText"></code><button class="btn small" type="button" id="copyPw">Copy</button></div>
+        <label class="check"><input type="checkbox" id="savedPw"> I've saved this password somewhere safe</label>
+        <div class="row end"><button class="btn primary" type="button" id="finishSetup" disabled>Lock it in</button></div>
+      </div>
+    </div>
+    <p class="muted center"><a href="#" id="toLogin">Back to login</a></p>
+  </div>
+
+  <!-- dashboard -->
+  <div class="hidden" id="dash">
+    <div class="admin-grid">
+      <div class="panel">
+        <h2>Versions</h2>
+        <p class="muted">Switch a version on to show it on the site, off to hide it. Hidden versions can't be seen or downloaded by anyone else.</p>
+        <div id="vlist"><div class="msg">Loading...</div></div>
+        <div class="msg" id="listMsg"></div>
+      </div>
+      <div>
+        <div class="panel">
+          <h2>Upload a version</h2>
+          <p class="muted">New version, or new files for an existing one (files with the same name get replaced).</p>
+          <form id="upForm" autocomplete="off">
+            <label class="f" for="upTag">Version</label>
+            <input type="text" id="upTag" placeholder="v6.1" spellcheck="false">
+            <label class="f" for="upTitle">Title</label>
+            <input type="text" id="upTitle" placeholder="Yap++ Studio v6.1">
+            <label class="f" for="upNotes">What's new (optional)</label>
+            <textarea id="upNotes" placeholder="- Lines starting with a dash become bullet points&#10;- **Bold** works too"></textarea>
+            <label class="f" for="upFiles">Installer files (.exe, .zip)</label>
+            <input type="file" id="upFiles" multiple accept=".exe,.zip">
+            <label class="check"><input type="checkbox" id="upShow"> Show it on the site straight away</label>
+            <div class="row end"><button class="btn primary" type="submit" id="upBtn">Upload</button></div>
+          </form>
+          <div class="msg" id="upMsg"></div>
+        </div>
+        <div class="panel hidden" id="pwPanel">
+          <h2>Change password</h2>
+          <p class="muted">Makes a new random password. The old one stops working as soon as you save.</p>
+          <div class="pw"><code id="chPwText"></code><button class="btn small" type="button" id="chCopy">Copy</button></div>
+          <label class="check"><input type="checkbox" id="chSaved"> I've saved the new password</label>
+          <div class="row end"><button class="btn" type="button" id="chCancel">Cancel</button><button class="btn primary" type="button" id="chSave" disabled>Save new password</button></div>
+          <div class="msg" id="chMsg"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<script src="assets/core.js"></script>
+<script src="assets/admin.js"></script>
+</body>
+</html>
