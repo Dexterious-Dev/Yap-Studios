@@ -1,9 +1,11 @@
 {
-  "version": "6.4",
-  "title": "Casino corner and new sizes",
+  "version": "6.5",
+  "title": "Games, levelled up",
   "date": "November 2026",
   "notes": [
-    "Casino corner: Lucky Slots, Twenty-One, Higher or Lower, Lucky Wheel and Peg Drop, played with pretend coins (just for fun: nothing real\u2026",
-    "Pixel Studio: Profile effect (exports at 450 x 880) and Name plate (600 x 120) sizes, with Yapin\u2019s layout drawn on so you know what to\u2026"
+    "Brick Blitz: a new brick breaker with levels and power-ups (wider paddle, extra balls, slow motion)",
+    "Every game has sound effects (with a mute button), screen shake, particle bursts and score pop-ups, and real-time games pause with P (or\u2026",
+    "Meteor Dodge: shield and slow-mo power-ups. Pixel Serpent: a slow-time potion and rocks that appear as you grow. Stack Tower: a pixel\u2026",
+    "Memory Match cards flip over and you get a star rating; Reaction Rush rates every tap; casino wins rain coins"
   ]
 }
