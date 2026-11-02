@@ -1,0 +1,11 @@
+{
+  "version": "6.1",
+  "title": "Pixel Studio 2",
+  "date": "November 2026",
+  "notes": [
+    "Pixel Studio 2: select a box, draw a lasso or use the magic wand, then copy, cut, paste, move, nudge, flip, rotate, crop or invert it. Drawing only happens inside the selection",
+    "New tools: dithered gradient, shade (lightens or darkens with a little hue shift), dither brush and pixel text",
+    "Pixel-perfect pencil lines, a round brush, and fill every pixel of a colour at once (Shift+click)",
+    "Hold Shift for straight and 45-degree lines, squares and circles. Alt+click takes a colour with any tool"
+  ]
+}
